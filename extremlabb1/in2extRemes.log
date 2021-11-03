@@ -1,0 +1,125 @@
+in2extRemesData <- list()
+in2extRemesData <- list()
+in2extRemesData <- list()
+in2extRemesData <- list()
+in2extRemesData <- list()
+in2extRemesData[["data"]] <- source( "C:/Users/gusta/OneDrive/Dokument/Skola/Extremevalues/Computer Assignment 1/portpirie.R")$value
+class( in2extRemesData) <- "in2extRemesDataObject"
+in2extRemesData$name <- strsplit( "C:/Users/gusta/OneDrive/Dokument/Skola/Extremevalues/Computer Assignment 1/portpirie.R", "/")[[1]][ 9]
+in2extRemesData$file.path <- "C:/Users/gusta/OneDrive/Dokument/Skola/Extremevalues/Computer Assignment 1/portpirie.R"
+assign( "portpirie", in2extRemesData, pos=".GlobalEnv")
+print( summary( in2extRemesData[["data"]]))
+save.image()
+dd <- get( "portpirie")
+plot( dd[["data"]][,1], dd[["data"]][,2], xlab=colnames(dd[["data"]])[1], ylab=colnames(dd[["data"]])[2], pch="o")
+cov.names <- character(0)
+dd <- get( "portpirie")
+xdat <- dd[["data"]]
+threshold.val <- NA
+dd[["models"]][["fit1"]] <- fit <- fevd( SeaLevel, data = xdat, location.fun = ~ 1, scale.fun = ~ 1, shape.fun = ~ 1, use.phi = FALSE, units = "", type = "GEV", na.action = na.fail)
+print(fit)
+assign( "portpirie", dd, pos=".GlobalEnv")
+cov.names <- character(0)
+dd <- get( "portpirie")
+xdat <- dd[["data"]]
+threshold.val <- NA
+dd[["models"]][["fit2"]] <- fit <- fevd( SeaLevel, data = xdat, threshold = threshold.val, threshold.fun = ~1, location.fun = ~ 1, scale.fun = ~ 1, shape.fun = ~ 1, use.phi = FALSE, units = "", time.units = "days", type = "Gumbel", na.action = na.fail)
+print(fit)
+assign( "portpirie", dd, pos=".GlobalEnv")
+dd <- get( "portpirie")
+fit <- dd[["models"]][[1]]
+ciout <- ci(fit, alpha = 0.05, type = "parameter", method = "normal")
+print(ciout)
+ciout <- ci(fit, alpha = 0.05, return.period = 10, R = 502, method = "normal", xrange = NULL, nint = 20, verbose = TRUE)
+print(ciout)
+dd <- get( "portpirie")
+fit <- dd[["models"]][[1]]
+ciout <- ci(fit, alpha = 0.05, type = "parameter", method = "normal")
+print(ciout)
+ciout <- ci(fit, alpha = 0.05, return.period = 10, R = 502, method = "normal", xrange = NULL, nint = 20, verbose = FALSE)
+print(ciout)
+dd <- get( "portpirie")
+fit <- dd[["models"]][[1]]
+ciout <- ci(fit, alpha = 0.05, type = "parameter", method = "normal")
+print(ciout)
+ciout <- ci(fit, alpha = 0.05, return.period = 100, R = 502, method = "normal", xrange = NULL, nint = 20, verbose = FALSE)
+print(ciout)
+dd <- get( "portpirie")
+fit <- dd[["models"]][[2]]
+ciout <- ci(fit, alpha = 0.05, type = "parameter", method = "normal")
+print(ciout)
+dd <- get( "portpirie")
+fit <- dd[["models"]][[2]]
+ciout <- ci(fit, alpha = 0.05, type = "parameter", method = "normal")
+print(ciout)
+ciout <- ci(fit, alpha = 0.05, return.period = 1e+08, R = 502, method = "normal", xrange = NULL, nint = 20, verbose = TRUE)
+print(ciout)
+dd <- get( "portpirie")
+fit <- dd[["models"]][[2]]
+ciout <- ci(fit, alpha = 0.05, type = "parameter", method = "normal")
+print(ciout)
+ciout <- ci(fit, alpha = 0.05, return.period = 1e+11, R = 502, method = "normal", xrange = NULL, nint = 20, verbose = TRUE)
+print(ciout)
+dd <- get( "portpirie")
+fit <- dd[["models"]][[2]]
+dd <- get( "portpirie")
+fit <- dd[["models"]][[1]]
+ciout <- ci(fit, alpha = 0.05, type = "parameter", method = "normal")
+print(ciout)
+ciout <- ci(fit, alpha = 0.05, return.period = 1e+10, R = 502, method = "normal", xrange = NULL, nint = 20, verbose = FALSE)
+print(ciout)
+dd <- get( "portpirie")
+fit <- dd[["models"]][[1]]
+ciout <- ci(fit, alpha = 0.05, type = "parameter", method = "normal")
+print(ciout)
+ciout <- ci(fit, alpha = 0.05, return.period = 1e+13, R = 502, method = "normal", xrange = NULL, nint = 20, verbose = FALSE)
+print(ciout)
+dd <- get( "portpirie")
+fit <- dd[["models"]][[1]]
+ciout <- ci(fit, alpha = 0.05, type = "parameter", method = "normal")
+print(ciout)
+dd <- get( "portpirie")
+fit <- dd[["models"]][[1]]
+ciout <- ci(fit, alpha = 0.05, type = "parameter", method = "normal")
+print(ciout)
+dd <- get( "portpirie")
+fit <- dd[["models"]][[1]]
+ciout <- ci(fit, alpha = 0.05, type = "parameter", method = "normal")
+print(ciout)
+ciout <- ci(fit, alpha = 0.05, return.period = 1e+16, R = 502, method = "normal", xrange = NULL, nint = 20, verbose = FALSE)
+print(ciout)
+dd <- get( "portpirie")
+m0 <- dd[["models"]][[ 2]]
+m1 <- dd[["models"]][[ 1]]
+out <- lr.test(x = m0, y = m1, alpha = 0.05)
+print(out)
+dd <- get( "portpirie")
+m0 <- dd[["models"]][[ 1]]
+m1 <- dd[["models"]][[ 2]]
+out <- lr.test(x = m0, y = m1, alpha = 0.05)
+print(out)
+dd <- get( "portpirie")
+m0 <- dd[["models"]][[ 1]]
+m1 <- dd[["models"]][[ 2]]
+out <- lr.test(x = m0, y = m1, alpha = 0.05)
+print(out)
+dd <- get( "portpirie")
+m0 <- dd[["models"]][[ 2]]
+m1 <- dd[["models"]][[ 1]]
+out <- lr.test(x = m0, y = m1, alpha = 0.05)
+print(out)
+dd <- get( "portpirie")
+m0 <- dd[["models"]][[ 1]]
+m1 <- dd[["models"]][[ 2]]
+out <- lr.test(x = m0, y = m1, alpha = 0.05)
+print(out)
+dd <- get( "portpirie")
+m0 <- dd[["models"]][[ 2]]
+m1 <- dd[["models"]][[ 1]]
+out <- lr.test(x = m0, y = m1, alpha = 0.05)
+print(out)
+dd <- get( "portpirie")
+m0 <- dd[["models"]][[ 1]]
+m1 <- dd[["models"]][[ 2]]
+out <- lr.test(x = m0, y = m1, alpha = 0.05)
+print(out)
